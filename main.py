@@ -1,7 +1,14 @@
+import discord
+from discord import app_commands
+from discord.ui import View, Select
 
 from flask import Flask
 from threading import Thread
+
 import os
+import json
+
+from datetime import datetime
 
 app = Flask(__name__)
 
@@ -12,9 +19,7 @@ def home():
 def run_web():
     port = int(os.environ.get("PORT", 10000))
     app.run(host="0.0.0.0", port=port)
-
-Thread(target=run_web).start()
-
+    
 
 
 TOKEN = os.getenv("DISCORD_TOKEN")
@@ -422,5 +427,6 @@ async def leaderboard(interaction: discord.Interaction):
 
     await interaction.followup.send(embed=embed)
 
-
-client.run(TOKEN)
+if __name__ == "__main__":
+    Thread(target=run_web).start()
+    client.run(TOKEN)
