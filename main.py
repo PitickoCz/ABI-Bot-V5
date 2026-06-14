@@ -1,3 +1,4 @@
+
 from flask import Flask
 from threading import Thread
 import os
@@ -15,16 +16,6 @@ def run_web():
 Thread(target=run_web).start()
 
 
-
-import discord
-from discord import app_commands
-from discord.ui import View, Select
-import os
-import json
-from datetime import datetime
-from dotenv import load_dotenv
-
-load_dotenv()
 
 TOKEN = os.getenv("DISCORD_TOKEN")
 
