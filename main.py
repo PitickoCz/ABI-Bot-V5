@@ -1,3 +1,21 @@
+from flask import Flask
+from threading import Thread
+import os
+
+app = Flask(__name__)
+
+@app.route("/")
+def home():
+    return "ABI Bot Online"
+
+def run_web():
+    port = int(os.environ.get("PORT", 10000))
+    app.run(host="0.0.0.0", port=port)
+
+Thread(target=run_web).start()
+
+
+
 import discord
 from discord import app_commands
 from discord.ui import View, Select
@@ -415,23 +433,3 @@ async def leaderboard(interaction: discord.Interaction):
 
 
 client.run(TOKEN)
-
-
-
-
-
-from flask import Flask
-from threading import Thread
-import os
-
-app = Flask('')
-
-@app.route('/')
-def home():
-    return "ABI Bot Online"
-
-def run_web():
-    port = int(os.environ.get("PORT", 10000))
-    app.run(host="0.0.0.0", port=port)
-
-Thread(target=run_web).start()
